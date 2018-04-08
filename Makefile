@@ -1,7 +1,7 @@
 .PHONY: install update
 
 install:
-	apt-get install ansible
+	apt-get install -yqq ansible
 	ansible-playbook -v playbooks/install.yml
 
 update:

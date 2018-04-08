@@ -12,8 +12,8 @@ To run (this assume root access):
 
 ```shell
 apt-get update && apt-get install -yqq git make
-cd /opt
-git clone https://github.com/radius314/frisbee
+git clone https://github.com/radius314/frisbee /opt/frisbee
+cd /opt/frisbee
 make install
 ```
 
