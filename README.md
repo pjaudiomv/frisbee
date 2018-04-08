@@ -11,13 +11,23 @@ This relies heavily on Ansible.  Package management is complex and different for
 To run (this assume root access):
 
 ```shell
-apt-get update
-apt-get install -yqq git make
+apt-get update && apt-get install -yqq git make
 cd /opt
 git clone https://github.com/radius314/frisbee
 make install
+```
+
+Once completed you will be able to access your WP instance here:
+http://[server-or-ip]/
+
+Your BMLT server:
+http://[server-or-ip]/
+
+phpmyadmin:
+http://[server-or-ip]/phpmyadmin
 
 TODO:
 * security hardening
 * install yap
 * instructions for configuring
+* tls + ssl
