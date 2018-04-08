@@ -1,0 +1,11 @@
+---
+- name: Download {{ item }}
+  get_url:
+    url=https://downloads.wordpress.org/plugin/{{ item }}.zip
+    dest=/tmp/{{ item }}.zip
+    validate_certs=no
+  with_items: "{{ plugins }}"
+
+- name: Extract {{ item }}
+  unarchive: src=/tmp/{{ item }}.zip dest=/var/www/wordpress/wp-content/plugins copy=no
+  with_items: "{{ plugins }}"

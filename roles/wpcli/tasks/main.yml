@@ -1,0 +1,15 @@
+---
+- name: download wp-cli
+  get_url:
+      url=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+      dest=/tmp/wp-cli.phar
+      validate_certs=no
+
+- name: verify phar
+  shell: php /tmp/wp-cli.phar --info
+
+- name: set execute permission
+  file: dest=/tmp/wp-cli.phar mode=a+x
+
+- name: copy to accessible bath
+  command: mv /tmp/wp-cli.phar /usr/local/bin/wp

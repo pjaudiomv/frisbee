@@ -3,6 +3,10 @@
   roles:
     - server
     - mysql
+    - phpmyadmin
+    - wordpress
+    - wpcli
+    - wp-plugins
 
   vars_prompt:
     - name: "mysql_root_password"

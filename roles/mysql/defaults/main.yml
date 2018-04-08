@@ -1,3 +1,2 @@
 ---
-wp_mysql_db: wordpress
-wp_mysql_user: frisbee_user
+mysql_user: frisbee_user

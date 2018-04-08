@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-ansible-playbook -vvvv playbooks/all.yml
+ansible-playbook -v playbooks/install.yml
 /bin/bash
