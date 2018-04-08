@@ -25,5 +25,5 @@
       prompt: "Enter the password for the BMLT serveradmin user (do not lose this!)"
       private: no
     - name: "google_api_key"
-      prompt: "Enter your Google API Key"
+      prompt: "Enter your Google API Key (use this for guidance: https://bmlt.magshare.net/google-maps-api-keys-and-geolocation-issues/)"
       private: no
