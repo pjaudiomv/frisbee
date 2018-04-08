@@ -29,9 +29,12 @@ http://[server-or-ip]/phpmyadmin
 ### yap
 http://[server-or-ip]/yap-master
 
+### To generate a certificate
+certbot --apache -d [domain-name]
+service apache2 restart
+
 ---
 
 ### TODO:
 * security hardening
-* instructions for configuring
-* tls + ssl
+* special config

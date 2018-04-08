@@ -9,6 +9,7 @@
     - wp-plugins
     - bmlt-root-server
     - yap
+    - letsencrypt
 
   vars:
     - wp_path: "/var/www/html"

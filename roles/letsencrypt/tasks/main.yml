@@ -1,0 +1,12 @@
+---
+- name: Install required software
+  apt: name=software-properties-common state=present
+
+- name: Add repo
+  command: "add-apt-repository ppa:certbot/certbot"
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install required software
+  apt: name=python-certbot-apache state=present
