@@ -1,0 +1,22 @@
+---
+- name: Download latest Yap
+  get_url:
+    url=https://github.com/radius314/yap/archive/master.zip
+    dest=/tmp/yap.zip
+    validate_certs=no
+
+- name: Extract Yap
+  unarchive: src=/tmp/yap.zip dest={{ wp_path }}
+
+- name: Set permissions on files
+  file:
+    path: "{{ wp_path }}/yap-master"
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Deploy configuration
+  template:
+    src=config.php.j2
+    dest={{ wp_path }}/yap-master/config.php
+    mode=0644

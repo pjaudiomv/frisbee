@@ -26,10 +26,12 @@ http://[server-or-ip]/main_server
 ### phpmyadmin
 http://[server-or-ip]/phpmyadmin
 
+### yap
+http://[server-or-ip]/yap-master
+
 ---
 
 ### TODO:
 * security hardening
-* install yap
 * instructions for configuring
 * tls + ssl

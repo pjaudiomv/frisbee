@@ -8,6 +8,7 @@
     - wpcli
     - wp-plugins
     - bmlt-root-server
+    - yap
 
   vars:
     - wp_path: "/var/www/html"
