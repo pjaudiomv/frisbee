@@ -1,3 +1,5 @@
 ---
 plugins:
   - bread
+  - bmlt-tabbed-ui.6.0.14
+  - bmlt-wordpress-satellite-plugin.3.9.2
