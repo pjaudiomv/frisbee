@@ -17,13 +17,13 @@ git clone https://github.com/radius314/frisbee
 make install
 ```
 
-Once completed you will be able to access your WP instance here:
+###Once completed you will be able to access your WP instance here
 http://[server-or-ip]/
 
-Your BMLT server:
-http://[server-or-ip]/
+###Your BMLT server
+http://[server-or-ip]/main_server
 
-phpmyadmin:
+###phpmyadmin
 http://[server-or-ip]/phpmyadmin
 
 TODO:
