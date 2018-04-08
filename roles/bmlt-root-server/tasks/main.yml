@@ -1,0 +1,28 @@
+---
+- name: Download latest BMLT root server
+  get_url:
+    url=https://github.com/LittleGreenViper/BMLT-Root-Server/raw/master/{{ bmlt_file_name }}
+    dest=/tmp/{{ bmlt_file_name }}
+    validate_certs=no
+
+- name: Extract BMLT root server
+  unarchive: src=/tmp/{{ bmlt_file_name }} dest={{ wp_path }}
+
+- name: Set permissions on files
+  file:
+    path: "{{ wp_path }}"
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Create bmlt database
+  mysql_db: name={{ bmlt_db }} login_user=root login_password="{{ mysql_root_password }}" state=present
+
+- name: Initialize BMLT database
+  command: "curl -XPOST -H \"application/x-www-form-urlencoded\" http://localhost/main_server/index.php --data \"ajax_req=initialize_db&dbType=mysql&dbName={{ bmlt_db }}&dbUser={{ mysql_user }}&dbPassword={{ mysql_password }}&dbServer=localhost&dbPrefix=na&admin_login=serveradmin&admin_password={{ bmlt_serveradmin_password }}&salt={{ ansible_date_time.epoch }}\""
+
+- name: Deploy configuration
+  template:
+    src=auto-config.inc.php.j2
+    dest={{ wp_path }}/auto-config.inc.php
+    mode=0644

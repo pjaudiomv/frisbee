@@ -7,6 +7,10 @@
     - wordpress
     - wpcli
     - wp-plugins
+    - bmlt-root-server
+
+  vars:
+    - wp_path: "/var/www/html"
 
   vars_prompt:
     - name: "mysql_root_password"
@@ -14,4 +18,10 @@
       private: no
     - name: "mysql_password"
       prompt: "Create MySQL password (do not lose this!)"
+      private: no
+    - name: "bmlt_serveradmin_password"
+      prompt: "Enter the password for the BMLT serveradmin user (do not lose this!)"
+      private: no
+    - name: "google_api_key"
+      prompt: "Enter your Google API Key"
       private: no

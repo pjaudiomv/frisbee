@@ -7,12 +7,12 @@
   with_items: "{{ plugins }}"
 
 - name: Extract {{ item }}
-  unarchive: src=/tmp/{{ item }}.zip dest=/var/www/wordpress/wp-content/plugins copy=no
+  unarchive: src=/tmp/{{ item }}.zip dest={{ wp_path }}/wp-content/plugins copy=no
   with_items: "{{ plugins }}"
 
 - name: Set permissions on plugins
   file:
-    path: /var/www/wordpress/wp-content/plugins
+    path: "{{ wp_path }}/wp-content/plugins"
     recurse: yes
     owner: www-data
     group: www-data

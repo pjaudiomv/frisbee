@@ -8,31 +8,31 @@
     dest=/tmp/wordpress.tar.gz
     validate_certs=no
 
+# unarchive module doesn't know how to strip components
 - name: Extract WordPress
-  unarchive: src=/tmp/wordpress.tar.gz dest=/var/www/ copy=no
-
-- name: Update default Apache site
-  lineinfile:
-    dest=/etc/apache2/sites-enabled/000-default.conf
-    regexp="(.)+DocumentRoot /var/www/html"
-    line="DocumentRoot /var/www/wordpress"
+  command: tar -xvzf /tmp/wordpress.tar.gz -C {{ wp_path }} --strip-components=1
 
 - name: Set permissions on WP folder
   file:
-    path: /var/www/wordpress
+    path: "{{ wp_path }}"
     recurse: yes
     owner: www-data
     group: www-data
+
+- name: Remove stock index
+  file:
+    path: "{{ wp_path }}/index.html"
+    state: absent
 
 - name: restart apache
   service: name=apache2 state=restarted
 
 - name: Copy sample config file
-  command: mv /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php creates=/var/www/wordpress/wp-config.php
+  command: mv {{ wp_path }}/wp-config-sample.php {{ wp_path }}/wp-config.php creates={{ wp_path }}/wp-config.php
 
 - name: Update WordPress config file
   lineinfile:
-    dest=/var/www/wordpress/wp-config.php
+    dest={{ wp_path }}/wp-config.php
     regexp="{{ item.regexp }}"
     line="{{ item.line }}"
   with_items:
