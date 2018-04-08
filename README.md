@@ -19,7 +19,5 @@ make install
 
 TODO:
 * security hardening
-* install plugins (tabbed, satellite, bread)
-* install bmlt root server
 * install yap
 * instructions for configuring
