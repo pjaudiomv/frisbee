@@ -1,4 +1,9 @@
-.PHONY: ubuntu-1604-test
+.PHONY: install update
 
-ubuntu-1604-test:
-    docker run -it -v ./:/opt ubuntu:16.04 /bin/bash
+install:
+    apt-get install ansible
+    ansible-playbook -v playbooks/all.yml
+
+update:
+    git reset --hard
+    git pull origin master

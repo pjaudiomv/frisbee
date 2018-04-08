@@ -2,4 +2,12 @@
 - hosts: localhost
   roles:
     - server
+    - mysql
 
+  vars_prompt:
+    - name: "mysql_root_password"
+      prompt: "Create MySQL root password (do not lose this!)"
+      private: no
+    - name: "mysql_password"
+      prompt: "Create MySQL password (do not lose this!)"
+      private: no
